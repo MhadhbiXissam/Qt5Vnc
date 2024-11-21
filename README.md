@@ -1,13 +1,13 @@
 # Qt5Vnc
 
 ## Steps : 
-1   - installl Dependecies `bash install_dependecies.sh`: 
+1   - installl Dependecies : 
 ```bash
 sudo apt update 
 sudo apt install -y cmake qtbase5-dev xvfb x11vnc 
 ```
-2   - setup qmake project `bash setup.sh`:   
-> download libvncserver and build it locally 
+2   - download libvncserver and build it locally  :  
+
 ```bash
 git clone https://github.com/LibVNC/libvncserver.git
 pushd libvncserver
@@ -21,18 +21,15 @@ cp libvncserver/build/libvncclient.so .
 cp -r libvncserver/build/include/rfb .
 cp libvncserver/include/rfb/* rfb/
 rm -rf libvncserver 
-qmake -project 
 ```
 
-3   - setup qmake project `bash build.sh`:   
-> build the qt5 app 
+3   - build the qt5 app  : 
 ```bash
 qmake qvnc.pro
 make clean 
 ```
 
-3   - setup qmake project `bash build.sh`:   
-> build the qt5 app 
+4   - run the sever and client :   
 ```bash
 Xvfb :55 & 
 x11vnc -display :55 -nopw -rfbport 5800 & 
